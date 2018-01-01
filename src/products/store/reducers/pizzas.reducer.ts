@@ -17,6 +17,10 @@ export function reducer(state = initialState, action: fromPizzas.PizzasAction): 
   switch(action.type) {
     case fromPizzas.LOAD_PIZZAS: {
       return {
+        // The reducer is not actually fetching/loading the data
+        // Instead we have to setup an effect that listens to the
+        // LOAD_PIZZAS action. The effects will fetch the data
+        // then dispatch the LOAD_PIZZAS_SUCCESS action!
         ...state,
         loading: true
       };
