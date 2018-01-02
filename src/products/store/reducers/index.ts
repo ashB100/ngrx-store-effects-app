@@ -1,11 +1,13 @@
 // One file which contains all of the reducers for this
 // module
-
-import * as fromPizzas from './pizzas.reducer';
 import { ActionReducerMap, createFeatureSelector } from '@ngrx/store';
 
+import * as fromPizzas from './pizzas.reducer';
+import * as fromToppings from './toppings.reducer';
+
 export interface ProductsState {
-  pizzas: fromPizzas.PizzaState
+  pizzas: fromPizzas.PizzaState,
+  toppings: fromToppings.ToppingsState
 }
 
 // Register our reducers
@@ -13,7 +15,8 @@ export interface ProductsState {
 // function.
 // We're taking the reducer function and binding it to 'pizzas'
 export const reducers: ActionReducerMap<ProductsState> = {
-  pizzas: fromPizzas.reducer
+  pizzas: fromPizzas.reducer,
+  toppings: fromToppings.reducer
 };
 
 // Selectors

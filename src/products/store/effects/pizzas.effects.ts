@@ -46,4 +46,52 @@ export class PizzasEffects {
 
   // Angular's HttpClient Module returns an Observable which means
   // it fits with our effects.
+
+  @Effect()
+  createPizza$ = this.action$
+    .ofType(pizzaActions.CREATE_PIZZA)
+    .pipe(
+      // map it so we just return the payload which contains the pizza
+      map((action: pizzaActions.CreatePizza) => action.payload),
+      switchMap(pizza => {
+        return this.pizzaService
+          .createPizza(pizza) // Angular's http returns an observable so we can pipe it
+          .pipe(
+            map(pizza => new pizzaActions.CreatePizzaSuccess(pizza)),
+            catchError(error => of(new pizzaActions.CreatePizzaFail(error)))
+          );
+      })
+    );
+
+  @Effect()
+  updatePizza$ = this.action$
+    .ofType(pizzaActions.UPDATE_PIZZA)
+    .pipe(
+      map((action: pizzaActions.UpdatePizza) => action.payload),
+      switchMap(pizza => {
+        return this.pizzaService
+          .updatePizza(pizza)
+          .pipe(
+            map(pizza => new pizzaActions.UpdatePizzaSuccess(pizza)),
+            // Remember to use of to return an observable for catchError
+            catchError(error => of(new pizzaActions.UpdatePizzaFail(error)))
+          );
+      })
+    );
+
+  @Effect()
+  removePizza$ = this.action$
+    .ofType(pizzaActions.REMOVE_PIZZA)
+    .pipe(
+      map((action: pizzaActions.RemovePizza) => action.payload),
+      switchMap(pizza => {
+        return this.pizzaService
+          .removePizza(pizza)
+          .pipe(
+            map(() => new pizzaActions.RemovePizzaSuccess(pizza)),
+            catchError(error => of(new pizzaActions.RemovePizzaFail(error)))
+          );
+      })
+    );
+
 }
