@@ -7,6 +7,8 @@ import { Pizza } from '../../models/pizza.model';
 // We are communicating via events, these events
 // describe the steps of what is happening in our
 // application so we can respond to them accordingly
+
+// Action Constants
 export const LOAD_PIZZAS = '[Products] Load Pizzas';
 export const LOAD_PIZZAS_FAIL = '[Products] Load Pizzas Fail';
 export const LOAD_PIZZAS_SUCCESS = '[Products] Load Pizzas Success';
@@ -27,7 +29,7 @@ export class LoadPizzasSuccess implements Action {
 }
 
 // Create Pizza
-// Constants
+// Action Constants
 export const CREATE_PIZZA = '[Products] Create Pizza';
 export const CREATE_PIZZA_FAIL = '[Products] Create Pizza Fail';
 export const CREATE_PIZZA_SUCCESS = '[Products] Create Pizza Success';
@@ -49,7 +51,7 @@ export class CreatePizzaSuccess implements Action {
 }
 
 // Update Pizza
-// Constants
+// Action Constants
 export const UPDATE_PIZZA = '[Products] Update Pizza';
 export const UPDATE_PIZZA_FAIL = '[Products] Update Pizza Fail';
 export const UPDATE_PIZZA_SUCCESS = '[Products] Update Pizza Success';
@@ -71,7 +73,7 @@ export class UpdatePizzaSuccess {
 }
 
 // Remove Pizza
-// Constants
+// Action Constants
 export const REMOVE_PIZZA = '[Product] Remove Pizza';
 export const REMOVE_PIZZA_FAIL = '[Product] Remove Pizza Fail';
 export const REMOVE_PIZZA_SUCCESS = '[Product] Remove Pizza Success';

@@ -7,6 +7,7 @@ import { Pizza } from '../../models/pizza.model';
 
 @Component({
   selector: 'products',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['products.component.scss'],
   template: `
     <div class="products">
@@ -36,7 +37,8 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.pizzas$ = this.store.select(fromStore.getAllPizzas);
-    this.store.dispatch(new fromStore.LoadPizzas());
-    this.store.dispatch(new fromStore.LoadToppings());
+    // pizza and toppings are prefetched in their router guards
+    // this.store.dispatch(new fromStore.LoadPizzas());
+    //this.store.dispatch(new fromStore.LoadToppings());
   }
 }
