@@ -2,15 +2,18 @@ import { Action } from '@ngrx/store';
 
 import { Topping } from '../../models/topping.model';
 
+// Action Constants
 export const LOAD_TOPPINGS = '[Products] Load Toppings';
 export const LOAD_TOPPINGS_FAIL = '[Products] Load Toppings Fail';
 export const LOAD_TOPPINGS_SUCCESS = '[Products] Load Toppings Success';
 export const VISUALISE_TOPPINGS = '[Products] Visualise Toppings';
 
+// Action Creators
 export class LoadToppings implements Action {
   readonly type = LOAD_TOPPINGS;
 }
 
+// payload gets passed into constructor
 export class LoadToppingsFail implements Action {
   readonly type = LOAD_TOPPINGS_FAIL;
   constructor(public payload: any) {}
@@ -26,7 +29,7 @@ export class VisualiseToppings implements Action {
   constructor(public payload: number[]) {}
 }
 
-// action types
+// Action types
 export type ToppingsAction =
   | LoadToppings
   | LoadToppingsFail

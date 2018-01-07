@@ -35,9 +35,9 @@ export class CustomSerializer
 
     // Because the router is a state tree, we can iterate a state tree
     // This is not the state tree to do with ngrx, this is the state
-    // tree of Angular Router
-    // While we have a firstChild, which means we have a child routes,
-    // which means we have to iterate a few times to get the route param
+    // tree of Angular Router (of type ActivatedRouteSnapshot)
+    // While we have a firstChild, it means we have child routes,
+    // so we have to iterate a few times to get the route param
     while(state.firstChild) {
       state = state.firstChild;
     }

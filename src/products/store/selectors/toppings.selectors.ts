@@ -4,40 +4,6 @@ import * as fromRoot from '../../../app/store';
 import * as fromFeature from '../reducers';
 import * as fromToppings from '../reducers/toppings.reducer';
 
-export const getToppingsState = createSelector(
-  fromFeature.getProductState,
-  (state: fromFeature.ProductsState) => state.toppings
-);
-
-export const getToppingEntities = createSelector(
-  getToppingsState,
-  fromToppings.getToppingEntities
-);
-
-export const getSelectedToppings = createSelector(
-  getToppingsState,
-  fromToppings.getSelectedToppings
-);
-
-export const getAllToppings = createSelector(getToppingEntities, entities => {
-  return Object.keys(entities).map(id => entities[parseInt(id, 10)]);
-});
-
-export const getToppingsLoaded = createSelector(
-  getToppingsState,
-  fromToppings.getToppingsLoaded
-);
-
-export const getToppingsLoading = createSelector(
-  getToppingsState,
-  fromToppings.getToppingsLoading
-);
-/*import { createSelector } from '@ngrx/store';
-
-import * as fromRoot from '../../../app/store';
-import * as fromFeature from '../reducers';
-import * as fromToppings from '../reducers/toppings.reducer';
-
 // Get a reference to the toppings state:
 // first get the product state (this will give us state of type ProductsState)
 export const getToppingsState = createSelector(
@@ -59,14 +25,9 @@ export const getSelectedToppings = createSelector(
 
 // We want to pass all toppings to our components
 // So, we want to map our entities into array elements
-export const getAllToppings = createSelector(
-  getToppingEntities,
-  entities => {
-    return Object.keys(entities).map(id => {
-      return entities[parseInt(id, 10)];
-    });
-  }
-);
+export const getAllToppings = createSelector(getToppingEntities, entities => {
+  return Object.keys(entities).map(id => entities[parseInt(id, 10)]);
+});
 
 export const getToppingsLoaded = createSelector(
   getToppingsState,
@@ -76,7 +37,7 @@ export const getToppingsLoaded = createSelector(
 export const getToppingsLoading = createSelector(
   getToppingsState,
   fromToppings.getToppingsLoading
-); */
+);
 
 /*
 Our data structure looks like this:
